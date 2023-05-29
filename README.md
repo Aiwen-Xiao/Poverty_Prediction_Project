@@ -16,19 +16,19 @@ The whole project is split into four parts: Satellite image collecting, image pr
 
 - **1_Image_Collecting** [satellite_image_collection.ipynb](https://github.com/macs30123-s23/final-project-urban_explorer/blob/main/1_Image_Collecting/satellite_image_collection.ipynb) and [lambda_function.py](https://github.com/macs30123-s23/final-project-urban_explorer/blob/main/1_Image_Collecting/lambda_function.py)
     
-    This part sets step functions on AWS lambda which collects satellite images using MapBox API (https://docs.mapbox.com/api/maps/static-images/) and uploads the collected images to AWS S3 bucket. 10 images were ramdomly sampled (each image covers an area of 50m*50m) within each census tract and parallelly collected overall around 10k images. A mapping file was also generated which maps the image file name with the census tract id for the analysis in next step.
+    This part sets step functions on AWS lambda which collects satellite images using MapBox API (https://docs.mapbox.com/api/maps/static-images/) and uploads the collected images to AWS S3 bucket. This study ramdomly samples 10 images (each image covers an area of 50m*50m) within each census tract and parallelly collects overall around 10k images. A mapping file is also generated which maps the image file name with the census tract id for the analysis in next step.
 
 - **2_Satellite_Image_Processing** [mpi_area_extraction.py](https://github.com/macs30123-s23/final-project-urban_explorer/blob/main/2_Satellite_Image_Processing/mpi_area_extraction.py) and [mpi.sbatch](https://github.com/macs30123-s23/final-project-urban_explorer/blob/main/2_Satellite_Image_Processing/mpi.sbatch)
 
-    This part parallelly processes the 7850 satellite image to extract feature of house density. 
+    This part parallelly processes the 7850 satellite image to extract feature of house density using MPI parallelization. This study uses 10 nodes, distributes images evenly, and gathers the processed results in rank 0.
 
 - **3_Network_Analysis_GraphFrames** [network_analysis.ipynb](https://github.com/macs30123-s23/final-project-urban_explorer/blob/main/3_Network_Analysis_GraphFrames/network_analysis.ipynb)
 
-    This part uses Spark’s GraphFrames package to conduct network analysis upon over 5 million bikeshare trip data. We use geo-join to map census tracts with the start and end points in the original data. Each node represents one census tract and each edge represents a trip between two tracts. We extract node statistics from the network including degrees, PageRank, clustering coefficients and links to high income area for the use in following machine learning. We also plot the top census tracts with highest importance in the network.
+    This part uses Spark’s GraphFrames package to conduct network analysis upon over 5 million bikeshare trip data. This study uses geo-join to map census tracts with the start and end points in the original data. Each node represents one census tract and each edge represents a trip between two tracts. This study extracts node statistics from the network including degrees, PageRank, clustering coefficients and links to high income area for the use in following machine learning. 
 
 - **4_Spark_Machine_Learning** [SparkML.ipynb](https://github.com/macs30123-s23/final-project-urban_explorer/blob/main/4_Spark_Machine_Learning/sparkML.ipynb)
 
-    This part uses the extracted features including node statistics and house density along with socio-economic features from census data to train a random forest regressor in Spark. The house density of the area is defined to be the average area of the images extracted from this tract. We use 5 fold cross validation to select the best number of trees to use in the random forest regressor. We also try to compare the performaces of random forest with only urban features (node statistics + house density), and full features (urban features + socio-economic features).
+    This part uses the extracted features including node statistics and house density along with socio-economic features from census data to train a random forest regressor in Spark. The house density of the area is defined to be the average area of the images extracted from this tract. This study uses 5 fold cross validation to select the best number of trees to use in the random forest regressor and compares the performaces of random forest with only urban features (node statistics + house density), and full features (urban features + socio-economic features).
 
 # Findings
 Model Performance:
