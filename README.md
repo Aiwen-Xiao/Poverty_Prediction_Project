@@ -1,6 +1,6 @@
 # Poverty Prediction Using Urban Infrastructure Data
 
-# Research Question Summary
+# Research Question
 Addressing neighborhood poverty poses a significant challenge due to the dearth of comprehensive and timely data that captures the multifaceted nature of poverty. Traditional poverty assessment approaches often rely on limited demographic data, neglecting the impact of urban infrastructure on neighborhood dynamics. This research aims to transcend these constraints by exploring accessible urban infrastructure information to provide a more nuanced comprehension of neighborhood poverty.
 
 The primary research question driving this project is: How can urban infrastructure information be leveraged to predict poverty? To acquire urban infrastructure data, two principal sources are explored: bikeshare data and satellite imagery. The MapBox API facilitates the collection of satellite imagery, enabling the analysis of average house density within each census tract. The bikeshare data is sourced from the official website of Divvy bike, facilitating the construction of a bikeshare trip network, which elucidates features indicative of the utilization of bike facilities within each census tract. These data sources give rise to two subsidiary research questions: (1) Can house density serve as a reflection of poverty levels within a neighborhood? (2) How does bikeshare facility usage relate to poverty levels?
