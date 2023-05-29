@@ -9,8 +9,6 @@ To tackle these queries, a random forest regressor is trained utilizing the feat
 
 Over the course of the study, approximately 10 thousand images were collected and processed, and a network was constructed based on bikeshare trips encompassing over 5 million samples. To tackle the challenges posed by these vast datasets, innovative strategies such as Spark distributed computing, AWS Lambda parallelization, and MPI parallelization were effectively deployed, resulting in accelerated computation times.
 
-The findings from this research endeavor hold substantial implications for urban planning, policy formulation, and the design of social intervention strategies. We find building density is a powerful indicator for income, meaning relatively wealthy people in Chicago are living in popular neighborhoods with better safety gurantee and public infrastracture. The number of trips originating from high-income areas to the census tract is also a significant feature, meaning the social hierachy can reflect somehow in the area where they generally stay in. This project contributes to the overarching objective of alleviating poverty and fostering equitable and sustainable urban environments.
-
 # Project Summary
 The whole project is split into four parts: Satellite image collecting, image processing, network analysis and spark machine learning.
 
